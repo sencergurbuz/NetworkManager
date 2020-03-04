@@ -96,10 +96,8 @@ namespace NetworkManager
             MachineLocal.Role = enRole.Server;
             MachineLocal.Port = Convert.ToInt32(textBoxLocalPort.Text);
             MachineLocal.protocol = Protocol.UDP;
-            MachineLocal.onRecieved += Machine_onRecieved;
-
+            MachineLocal.onReceived += MachineLocal_onReceived;
             MachineLocal.Open();
-
             buttonListen.Enabled = false;
             buttonNotListen.Enabled = true;
         }
@@ -128,7 +126,7 @@ namespace NetworkManager
             MachineTarget.Send(bytes);
         }
 
-        private void Machine_onRecieved(byte[] bytes)
+        private void MachineLocal_onReceived(byte[] bytes, System.Net.IPEndPoint sender)
         {
             if (textBoxRecieve.InvokeRequired)
             {

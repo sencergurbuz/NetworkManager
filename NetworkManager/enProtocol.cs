@@ -9,6 +9,7 @@ namespace NetworkManager
     public enum Protocol
     {
         UDP,
-        TCP
+        TCP,
+        SerialPort
     }
 }
